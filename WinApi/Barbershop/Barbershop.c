@@ -19,7 +19,7 @@ barbershop_t* new_barbershop() {
 
 	barbershop->customers = 0;
 	
-	barbershop->mutex = CreateSemaphore(NULL, 1, LONG_MAX, TEXT("mutex"));
+	barbershop->mutex = CreateMutex(NULL, FALSE, TEXT("mutex"));
 	if (barbershop->mutex == NULL) {
 		printf("MTX err: %d\n", GetLastError());
 	}
@@ -56,7 +56,7 @@ DWORD WINAPI CustomerThread(LPVOID ptr) {
 			return EXIT_FAILURE;  // barbershop is full
 		}
 		barbershop->customers++;
-	ReleaseSemaphore(barbershop->mutex, 1, NULL);
+	ReleaseMutex(barbershop->mutex);
 
 	ReleaseSemaphore(barbershop->customer, 1, NULL);  // signal barber that we entered
 	WaitForSingleObject(barbershop->barber, INFINITE);  // wait for barber
@@ -65,8 +65,8 @@ DWORD WINAPI CustomerThread(LPVOID ptr) {
 
 	// only one tread can access barbershop->customers in the same moment
 	WaitForSingleObject(barbershop->mutex, INFINITE);
-	barbershop->customers--;
-	ReleaseSemaphore(barbershop->mutex, 1, NULL);
+		barbershop->customers--;
+	ReleaseMutex(barbershop->mutex);
 
 	return EXIT_SUCCESS;
 }
