@@ -227,7 +227,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	// we need console for stdout
 	AllocConsole();
-	freopen("CONOUT$", "wb", stdout);
+	FILE *nothing;
+	freopen_s(&nothing, "CONOUT$", "wb", stdout);
 
 	printCPU();
 
