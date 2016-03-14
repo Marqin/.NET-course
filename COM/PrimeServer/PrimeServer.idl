@@ -1,0 +1,35 @@
+// PrimeServer.idl : IDL source for PrimeServer
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (PrimeServer.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(3F8897BC-4BF6-4416-B24E-18D1E782AB42),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IPrime : IDispatch{
+	[id(1)] HRESULT IsPrime([in] int n, [out, retval] int* isPrime);
+};
+[
+	uuid(5A91A5CA-7116-4068-BAA9-0CA8F3874D91),
+	version(1.0),
+]
+library PrimeServerLib
+{
+	importlib("stdole2.tlb");
+	[		
+		uuid(1011E47A-51FD-44DC-9B4F-65A5EDEC721D)		
+	]
+	coclass Prime
+	{
+		[default] interface IPrime;
+	};
+};
+
