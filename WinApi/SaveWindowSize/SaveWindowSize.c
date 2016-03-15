@@ -116,5 +116,5 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		DispatchMessage(&Msg);
 	}
 
-	return Msg.wParam;
+	return EXIT_SUCCESS;
 }

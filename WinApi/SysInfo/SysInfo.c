@@ -8,7 +8,7 @@
 #pragma comment(lib, "gdi32.lib")
 #pragma comment(lib, "winspool.lib")
 
-BOOL getDWORDFromRegistry(LPSTR path, LPSTR name, PDWORD dw) {
+BOOL getDWORDFromRegistry(LPWSTR path, LPWSTR name, PDWORD dw) {
 	DWORD type = REG_DWORD;
 	DWORD size = sizeof(*dw);
 
@@ -21,8 +21,8 @@ BOOL getDWORDFromRegistry(LPSTR path, LPSTR name, PDWORD dw) {
 	return TRUE;
 }
 
-LPSTR getREG_SZFromRegistry(LPSTR path, LPSTR name) {
-	LPSTR str;
+LPWSTR getREG_SZFromRegistry(LPWSTR path, LPWSTR name) {
+	LPWSTR str;
 	DWORD szType = REG_SZ;
 	DWORD strSize = 0;
 
@@ -47,7 +47,7 @@ LPSTR getREG_SZFromRegistry(LPSTR path, LPSTR name) {
 }
 
 void printCPU() {
-	LPSTR model = getREG_SZFromRegistry(TEXT("HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0"), TEXT("ProcessorNameString"));
+	LPWSTR model = getREG_SZFromRegistry(TEXT("HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0"), TEXT("ProcessorNameString"));
 	DWORD speed = 0;
 	
 	if (!getDWORDFromRegistry(TEXT("HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0"), TEXT("~MHz"), &speed)) {
@@ -81,11 +81,11 @@ void printMem() {
 }
 
 void printOS() {
-	OSVERSIONINFOEX os;
-	ZeroMemory(&os, sizeof(OSVERSIONINFOEX));
-	os.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEX);
+	OSVERSIONINFOW os;
+	ZeroMemory(&os, sizeof(OSVERSIONINFOW));
+	os.dwOSVersionInfoSize = sizeof(OSVERSIONINFOW);
 	GetVersionEx(&os);
-	printf("Windows: %d.%d.%d %s\n", os.dwMajorVersion, os.dwMinorVersion, os.dwBuildNumber, os.szCSDVersion);
+	_tprintf(TEXT("Windows: %d.%d.%d %s\n"), os.dwMajorVersion, os.dwMinorVersion, os.dwBuildNumber, os.szCSDVersion);
 }
 
 void printUser() {
@@ -129,7 +129,7 @@ void printPrinters() {
 
 void printNET() {
 
-	LPSTR str = getREG_SZFromRegistry(TEXT("SOFTWARE\\Microsoft\\NET Framework Setup\\NDP"), TEXT("Version"));
+	LPWSTR str = getREG_SZFromRegistry(TEXT("SOFTWARE\\Microsoft\\NET Framework Setup\\NDP"), TEXT("Version"));
 
 	if ( str == NULL ) {
 		str = getREG_SZFromRegistry(TEXT("SOFTWARE\\Microsoft\\NET Framework Setup\\NDP\\v4\\Full"), TEXT("Version"));
@@ -146,7 +146,7 @@ void printNET() {
 }
 
 void printIE() {
-	LPSTR str = getREG_SZFromRegistry(TEXT("SOFTWARE\\Microsoft\\Internet Explorer"), TEXT("Version"));
+	LPWSTR str = getREG_SZFromRegistry(TEXT("SOFTWARE\\Microsoft\\Internet Explorer"), TEXT("Version"));
 
 	printf("Internet Explorer: ");
 	if (str == NULL) {
