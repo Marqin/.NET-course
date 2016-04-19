@@ -13,7 +13,7 @@ namespace PInvoke
 		{
 			Console.Write("Integer to test: ");
 			int n = Convert.ToInt32(Console.ReadLine());
-			Console.WriteLine(isPrime(n));
+			Console.WriteLine(isPrimeC(n));
 		}
 	}
 }
