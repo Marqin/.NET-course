@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+       <xs:element name="dane">
+              <xs:complexType>
+                     <xs:sequence>
+                            <xs:element name="student" maxOccurs="unbounded">
+                                   <xs:complexType>
+                                          <xs:sequence>
+                                                 <xs:element name="name" type="xs:string"></xs:element>
+                                                 <xs:element name="pesel" type="xs:string"></xs:element>
+                                                 <xs:element name="adres-zamieszkania" type="xs:string"></xs:element>
+                                                 <xs:element name="adres-zameldowania" type="xs:string"></xs:element>
+                                                 <xs:element type="xs:string" name="uwagi" minOccurs="0"/>
+                                                 <xs:element name="przedmioty">
+                                                        <xs:complexType>
+                                                               <xs:sequence>
+                                                                      <xs:element name="przedmiot">
+                                                                             <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                           <xs:element name="nazwa" type="xs:string"></xs:element>
+                                                                                           <xs:element name="ocena" type="xs:int"></xs:element>
+                                                                                       </xs:sequence>
+                                                                                </xs:complexType>
+                                                                         </xs:element>
+                                                                  </xs:sequence>
+                                                           </xs:complexType>
+                                                    </xs:element>
+                                             </xs:sequence>
+                                      </xs:complexType>
+                               </xs:element>
+                        </xs:sequence>
+                 </xs:complexType>
+          </xs:element>
+   </xs:schema>
+

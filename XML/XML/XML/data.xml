@@ -1,0 +1,39 @@
+﻿<dane>
+<student>
+<name>Jan Jan</name>
+<pesel>444</pesel>
+<adres-zamieszkania>Stawowa 1</adres-zamieszkania>
+<adres-zameldowania>Jelenia 2</adres-zameldowania>
+<przedmioty>
+	<przedmiot>
+	<nazwa>polski</nazwa>
+	<ocena>6</ocena>
+	</przedmiot>
+</przedmioty>
+</student>
+<student>
+<name>Jan Nowal</name>
+<pesel>123</pesel>
+<adres-zamieszkania>Stawowa 2</adres-zamieszkania>
+<adres-zameldowania>Jelenia 1</adres-zameldowania>
+<przedmioty>
+	<przedmiot>
+	<nazwa>polski</nazwa>
+	<ocena>5</ocena>
+	</przedmiot>
+</przedmioty>
+</student>
+<student>
+<name>Jan Kowalski</name>
+<pesel>456</pesel>
+<adres-zamieszkania>Ulicowa 3</adres-zamieszkania>
+<adres-zameldowania>Ulicowa 3</adres-zameldowania>
+<uwagi>bla bla</uwagi>
+<przedmioty>
+	<przedmiot>
+	<nazwa>polski</nazwa>
+	<ocena>4</ocena>
+	</przedmiot>
+</przedmioty>
+</student>
+</dane>
